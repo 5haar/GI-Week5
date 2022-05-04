@@ -96,22 +96,24 @@ function Person(name, job, age) {
   };
 }
 
-function Programmer(name, job, age, languages) {
-  this.name = name;
-  this.job = job;
-  this.age = age;
-  this.languages = languages;
-  this.busy = true;
-  this.exercise = function () {
-    return console.log("I am a Pirate");
+class Programmer extends Person {
+  constructor(name, job, age, languages) {
+    super(name, job, age);
+    this.languages = languages;
+    this.busy = true;
+  }
+
+  completeTask = function () {
+    this.busy = false;
+    return console.log(`${this.name} completed his task.`);
   };
-  this.fetchJob = function () {
-    return console.log(`${this.name} is a ${this.job}`);
+
+  acceptTask = function () {
+    this.busy = true;
+    return console.log(`${this.name} accepted a new task.`);
   };
-  this.completeTask = function () {
-    return (this.busy = false), console.log(`${this.name} completed his task.`);
-  };
-  this.acceptNewTask = function () {
+
+  offerNewTask = function () {
     return this.busy
       ? console.log(`${this.name} can't accept any new tasks right now.`)
       : console.log(
@@ -119,11 +121,11 @@ function Programmer(name, job, age, languages) {
         );
   };
 
-  this.listLanguages = function () {
+  listLanguages = function () {
     return console.log(this.languages);
   };
 
-  this.learnLanguages = function (x) {
+  learnLanguages = function (x) {
     return this.languages.push(`${x}`);
   };
 }
@@ -131,7 +133,7 @@ function Programmer(name, job, age, languages) {
 let person1 = new Person("Eustace", "Pirate", "23");
 let person2 = new Person("Luffy", "Pirate King", "22");
 
-person1.fetchJob();
+// person1.fetchJob();
 
 let person3 = new Programmer("Jackson", "Back-End", "22", [
   "JS",
@@ -139,27 +141,27 @@ let person3 = new Programmer("Jackson", "Back-End", "22", [
   "CSS",
 ]);
 
-person3.fetchJob();
-person3.acceptNewTask();
+// person3.fetchJob();
+// person3.acceptNewTask();
 person3.completeTask();
-person3.acceptNewTask();
+// person3.acceptNewTask();
 
-person3.listLanguages();
-person3.learnLanguages("Python");
-person3.listLanguages();
-person3.learnLanguages("React");
-person3.listLanguages();
+// person3.listLanguages();
+// person3.learnLanguages("Python");
+// person3.listLanguages();
+// person3.learnLanguages("React");
+// person3.listLanguages();
 
-let batman = new Programmer("Bruce Wayne", "Vigilante", "32", ["HTML"]);
+// let batman = new Programmer("Bruce Wayne", "Vigilante", "32", ["HTML"]);
 
-batman.listLanguages();
-batman.learnLanguages("CSS");
-batman.listLanguages();
-batman.learnLanguages("React");
-batman.learnLanguages("Python");
-batman.learnLanguages("Java");
-batman.listLanguages();
+// batman.listLanguages();
+// batman.learnLanguages("CSS");
+// batman.listLanguages();
+// batman.learnLanguages("React");
+// batman.learnLanguages("Python");
+// batman.learnLanguages("Java");
+// batman.listLanguages();
 
-batman.fetchJob();
+// batman.fetchJob();
 
 // Constructors: A way to create a blueprint of an object and then we can create instances of that object.
